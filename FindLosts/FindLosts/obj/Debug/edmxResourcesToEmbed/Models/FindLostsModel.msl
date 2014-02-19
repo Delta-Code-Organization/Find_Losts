@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FindLostsDBModelStoreContainer" CdmEntityContainer="FindLostsDBEntities">
+    <EntitySetMapping Name="LostsEntries">
+      <EntityTypeMapping TypeName="FindLostsDBModel.LostsEntries">
+        <MappingFragment StoreEntitySet="LostsEntries">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerPhone" ColumnName="OwnerPhone" />
+          <ScalarProperty Name="LostDate" ColumnName="LostDate" />
+          <ScalarProperty Name="LostPlace" ColumnName="LostPlace" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Moderators">
+      <EntityTypeMapping TypeName="FindLostsDBModel.Moderators">
+        <MappingFragment StoreEntitySet="Moderators">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

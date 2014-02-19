@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FindLostsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FindLostsDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="LostsEntries" EntityType="FindLostsDBModel.LostsEntries" />
+    <EntitySet Name="Moderators" EntityType="FindLostsDBModel.Moderators" />
+  </EntityContainer>
+  <EntityType Name="LostsEntries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="OwnerName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="OwnerPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LostDate" Type="DateTime" Precision="3" />
+    <Property Name="LostPlace" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Moderators">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+</Schema>

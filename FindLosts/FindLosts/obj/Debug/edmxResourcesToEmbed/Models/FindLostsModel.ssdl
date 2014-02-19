@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FindLostsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FindLostsDBModelStoreContainer">
+    <EntitySet Name="LostsEntries" EntityType="FindLostsDBModel.Store.LostsEntries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Moderators" EntityType="FindLostsDBModel.Store.Moderators" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="LostsEntries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Code" Type="int" />
+    <Property Name="OwnerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OwnerPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="LostDate" Type="datetime" />
+    <Property Name="LostPlace" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Moderators">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+</Schema>
