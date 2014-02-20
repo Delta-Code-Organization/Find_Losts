@@ -7,7 +7,7 @@ namespace FindLosts.Models
 {
     public enum Msgs
     {
-        Successfuk_Login=0,
+        Successful_Login=0,
         Wrong_Name_Or_Password=1,
         User_Name_Duplicated=2,
         Moderator_Created_Successfully=3,
