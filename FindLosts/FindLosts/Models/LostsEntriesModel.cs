@@ -16,7 +16,7 @@ namespace FindLosts.Models
                 var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code && p.Name == this.Name).SingleOrDefault();
                 return new Returner
                 {
-                    Data = lostEntry
+                    DataInJson = lostEntry.ToJson()
                 };
             }
             return new Returner
@@ -39,12 +39,12 @@ namespace FindLosts.Models
          public Returner SetLost()
          {
              var lostEntry = db.LostsEntries.Where(p => p.ID == this.ID).SingleOrDefault();
-             lostEntry.Status = this.Status;
+             lostEntry.Status=1;
              db.SaveChanges();
              var updatedLostEntry=db.LostsEntries.OrderByDescending(p=>p.ID).FirstOrDefault();
              return new Returner
              {
-                 Data = updatedLostEntry,
+                 DataInJson=updatedLostEntry.ToJson(),
                  Message = Msgs.Lost_Entry_Updated_Successfully
              };
          }
@@ -64,7 +64,7 @@ namespace FindLosts.Models
             var createdLostEntry = db.LostsEntries.OrderByDescending(p => p.ID).FirstOrDefault();
             return new Returner
             {
-                Data = createdLostEntry,
+                 DataInJson= createdLostEntry.ToJson(),
                 Message = Msgs.Lost_Entry_Created_Successfully
             };
         }
@@ -77,12 +77,22 @@ namespace FindLosts.Models
                   var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code).SingleOrDefault();
                   return new Returner
                   {
-                      Data = lostEntry
+                      DataInJson = lostEntry.ToJson()
                   };
               }
               return new Returner
               {
                   Message = Msgs.No_Results_Found
+              };
+          }
+
+          public Returner GetAllLosts()
+          {
+              var all = db.LostsEntries.OrderBy(p => p.ID).ToList();
+              return new Returner
+              {
+                  Data=all,
+                  DataInJson=all.ToJson()
               };
           }
     }

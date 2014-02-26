@@ -16,8 +16,8 @@ namespace FindLosts.Models
             {
                 return new Returner
                 {
-                    Data = moderator,
-                    Message = Msgs.Successfuk_Login
+                    DataInJson =moderator.ToJson(),
+                    Message = Msgs.Successful_Login
                 };
             }
             return new Returner
@@ -37,10 +37,10 @@ namespace FindLosts.Models
             }
             db.Moderators.Add(this);
             db.SaveChanges();
-            var createdModeratio=db.Moderators.OrderByDescending(p=>p.ID).FirstOrDefault();
+            var createdModerator=db.Moderators.OrderByDescending(p=>p.ID).FirstOrDefault();
             return new Returner
             {
-                Data = createdModeratio,
+                DataInJson=createdModerator.ToJson(),
                 Message = Msgs.Moderator_Created_Successfully
             };
         }
@@ -55,7 +55,7 @@ namespace FindLosts.Models
             var updatedModerator=db.Moderators.Where(p => p.ID == this.ID).SingleOrDefault();
             return new Returner
             {
-                Data = updatedModerator,
+                DataInJson=updatedModerator.ToJson(),
                 Message = Msgs.Moderator_Updated_Successfully
             };
         }
@@ -68,6 +68,23 @@ namespace FindLosts.Models
             return new Returner
             {
                 Message = Msgs.Moderator_Deleted_Successfully
+            };
+        }
+
+        public Returner GetAllModerators()
+        {
+            var all = db.Moderators.OrderBy(p => p.ID).ToList();
+            return new Returner
+            {
+                Data = all
+            };
+        }
+        public Returner GetModerator()
+        {
+            var moderator = db.Moderators.Where(p => p.ID == this.ID).SingleOrDefault();
+            return new Returner
+            {
+                Data = moderator
             };
         }
     }
