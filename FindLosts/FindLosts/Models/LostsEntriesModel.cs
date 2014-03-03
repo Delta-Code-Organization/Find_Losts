@@ -41,7 +41,7 @@ namespace FindLosts.Models
              var lostEntry = db.LostsEntries.Where(p => p.ID == this.ID).SingleOrDefault();
              lostEntry.Status=1;
              db.SaveChanges();
-             var updatedLostEntry=db.LostsEntries.OrderByDescending(p=>p.ID).FirstOrDefault();
+             var updatedLostEntry = db.LostsEntries.Where(p => p.ID == this.ID).SingleOrDefault();
              return new Returner
              {
                  DataInJson=updatedLostEntry.ToJson(),

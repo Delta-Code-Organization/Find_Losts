@@ -25,5 +25,5 @@
 });
 
 function Cancel() {
-    window.location.href = "/Moderator/CreateLost";
+    window.location.href = "/TerminalGuest/CreateLost";
 }

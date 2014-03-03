@@ -7,6 +7,8 @@ namespace FindLosts.Models
 {
     public enum ModeratorStatus
     {
-        Pending=0
+        لم_يتم_تأكيده=0,
+        تم_تأكيده=1,
+        تم_حذفه=2
     }
 }

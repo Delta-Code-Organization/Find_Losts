@@ -8,8 +8,11 @@
                 type: 'post',
                 data: { '_Password': adminPass, '_Name': adminName },
                 success: function (data) {
-                    //$('#result').text(data);
-                    window.location.href = '/Home/Index';
+                    if (data == "Successful Login")
+                    {
+                        window.location.href = "/Home/Index";
+                    }
+                    $('#result').text(data);
                 },
                 error: function (data) {
                     alert(data.responseText);

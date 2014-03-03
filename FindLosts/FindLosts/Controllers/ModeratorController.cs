@@ -65,7 +65,7 @@ namespace FindLosts.Controllers
          return moderator.CreateAdmin().Message.ShowMessage();
         }
 
-        public string CreateLosts(DateTime _LostDate,string _LostPlace,string _LostName,string _Description,string _Phone,string _OwnerName)
+        public string CreateLosts(DateTime _LostDate, string _LostPlace, string _LostName, string _Description, string _Phone, string _OwnerName)
         {
             LostsEntries lost = new LostsEntries();
             lost.LostDate = _LostDate;
@@ -78,7 +78,7 @@ namespace FindLosts.Controllers
             Random r = new Random();
             int num1 =r.Next(1000, 9999);
             int num2 =r.Next(1000, 9999);
-            //lost.Code =(num1.ToString()+"-"+num2.ToString());
+            lost.Code =(num1.ToString()+"-"+num2.ToString());
           return lost.CreateLostEntry().Message.ShowMessage();
         }
 
@@ -103,13 +103,15 @@ namespace FindLosts.Controllers
           return moderator.DeleteAdmins().Message.ShowMessage();
         }
 
-        public string UpdateModerator(string _Name,string _Password)
+        public string UpdateModerator(string _Name,string _Password,string _Status)
         {
             Moderators moderator = new Moderators();
             moderator.ID =(int)TempData["ID"];
             TempData.Keep();
             moderator.UserName = _Name;
+            moderator.Status = (int)Enum.Parse(typeof(ModeratorStatus),_Status);
             moderator.Password=_Password;
+            //moderator.Status =
           return  moderator.UpdateAdmins().Message.ShowMessage();
         }
 

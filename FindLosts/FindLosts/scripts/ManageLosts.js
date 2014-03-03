@@ -20,6 +20,7 @@ function SetFound(_ID) {
         data: { '_ID': _ID },
         success: function (data) {
             $('#result').text(data);
+            setInterval(window.location.href="/Moderator/ManageLosts",5000);
         },
         error: function (data) {
             alert(data.responseText);
