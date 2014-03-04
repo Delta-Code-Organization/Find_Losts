@@ -10,7 +10,7 @@
                 success: function (data) {
                     $('#result').text(data);
                 },
-                erro: function (data) {
+                error: function (data) {
                     alert(data.responseText);
                 }
             });

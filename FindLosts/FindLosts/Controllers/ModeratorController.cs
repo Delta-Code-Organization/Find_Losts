@@ -61,7 +61,7 @@ namespace FindLosts.Controllers
             Moderators moderator = new Moderators();
             moderator.UserName = _Name;
             moderator.Password = _Password;
-            moderator.Status = 0;
+            moderator.Status =1;
          return moderator.CreateAdmin().Message.ShowMessage();
         }
 
@@ -75,10 +75,6 @@ namespace FindLosts.Controllers
             lost.OwnerPhone = _Phone;
             lost.OwnerName = _OwnerName;
             lost.Status = 0;
-            Random r = new Random();
-            int num1 =r.Next(1000, 9999);
-            int num2 =r.Next(1000, 9999);
-            lost.Code =(num1.ToString()+"-"+num2.ToString());
           return lost.CreateLostEntry().Message.ShowMessage();
         }
 
@@ -103,13 +99,12 @@ namespace FindLosts.Controllers
           return moderator.DeleteAdmins().Message.ShowMessage();
         }
 
-        public string UpdateModerator(string _Name,string _Password,string _Status)
+        public string UpdateModerator(string _Name,string _Password)
         {
             Moderators moderator = new Moderators();
             moderator.ID =(int)TempData["ID"];
             TempData.Keep();
             moderator.UserName = _Name;
-            moderator.Status = (int)Enum.Parse(typeof(ModeratorStatus),_Status);
             moderator.Password=_Password;
             //moderator.Status =
           return  moderator.UpdateAdmins().Message.ShowMessage();
@@ -119,7 +114,34 @@ namespace FindLosts.Controllers
             Moderators moderator = new Moderators();
             moderator.Password = _Password;
             moderator.UserName = _Name;
-         return moderator.Login().Message.ShowMessage();
+            var msg=moderator.Login();
+            if (msg.Message.ShowMessage() == "تم تسجيل الدخول بنجاح")
+            {
+                Session["Admin"] = msg.Data;
+                return msg.Message.ShowMessage();
+            }
+            return msg.Message.ShowMessage();
+        }
+        public JsonResult SearchResult(string _Name,string _Code)
+        {
+            LostsEntries lost = new LostsEntries();
+            if (_Name != "" && _Code == "")
+            {
+                lost.Name = _Name;
+             return lost.SearchLostsByName().DataInJson;
+            }
+            if (_Name == "" && _Code != "")
+            {
+                lost.Code=_Code;
+                return lost.SearchLostsByCode().DataInJson;
+            }
+            if (_Name != "" && _Code != "")
+            {
+                lost.Name = _Name;
+                lost.Code = _Code;
+                return lost.SearchLostsByNameAndCode().DataInJson;
+            }
+            return new JsonResult();
         }
     }
 }

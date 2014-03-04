@@ -21,7 +21,7 @@ namespace FindLosts.Models
             }
             return new Returner
             {
-                Message = Msgs.No_Results_Found
+                Message = Msgs.لا_يوجد_نتائج_مطابقه_للبحث
             };
         }
 
@@ -32,7 +32,7 @@ namespace FindLosts.Models
              db.SaveChanges();
              return new Returner
              {
-                 Message = Msgs.Lost_Entry_Deleted_Successfully
+                 Message = Msgs.تم_حذف_المفقود_بنجاح
              };
          }
 
@@ -45,19 +45,20 @@ namespace FindLosts.Models
              return new Returner
              {
                  DataInJson=updatedLostEntry.ToJson(),
-                 Message = Msgs.Lost_Entry_Updated_Successfully
+                 Message = Msgs.تم_تعديل_المفقود_بنجاح
              };
          }
 
           public Returner CreateLostEntry()
         {
-            var exist = db.LostsEntries.Any(p => p.Name == this.Name||p.Code==this.Code);
+            Random r = new Random();
+            int num1 = r.Next(1000, 9999);
+            int num2 = r.Next(1000, 9999);
+            this.Code = (num1.ToString() + "-" + num2.ToString());
+            var exist = db.LostsEntries.Any(p => p.Code == this.Code);
             if (exist == true)
             {
-                return new Returner
-                {
-                    Message = Msgs.Lost_Entry_Duplicated
-                };
+                CreateLostEntry();
             }
             db.LostsEntries.Add(this);
             db.SaveChanges();
@@ -65,9 +66,26 @@ namespace FindLosts.Models
             return new Returner
             {
                  DataInJson= createdLostEntry.ToJson(),
-                Message = Msgs.Lost_Entry_Created_Successfully
+                Message = Msgs.تم_تسجيل_المفقود_بنجاح
             };
         }
+          public Returner SearchLostsByName()
+          {
+              var exist = db.LostsEntries.Any(p => p.Name == this.Name);
+              if (exist == true)
+              {
+                  var lostEntry = db.LostsEntries.Where(p =>  p.Name == this.Name).SingleOrDefault();
+                  return new Returner
+                  {
+                      Data=lostEntry,
+                      DataInJson = lostEntry.ToJson()
+                  };
+              }
+              return new Returner
+              {
+                  Message = Msgs.لا_يوجد_نتائج_مطابقه_للبحث
+              };
+          }
 
           public Returner SearchLostsByCode()
           {
@@ -82,7 +100,7 @@ namespace FindLosts.Models
               }
               return new Returner
               {
-                  Message = Msgs.No_Results_Found
+                  Message = Msgs.لا_يوجد_نتائج_مطابقه_للبحث
               };
           }
 

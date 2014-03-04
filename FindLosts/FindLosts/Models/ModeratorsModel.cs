@@ -16,13 +16,13 @@ namespace FindLosts.Models
             {
                 return new Returner
                 {
-                    DataInJson =moderator.ToJson(),
-                    Message = Msgs.Successful_Login
+                    Data=moderator,
+                    Message = Msgs.تم_تسجيل_الدخول_بنجاح
                 };
             }
             return new Returner
             {
-                Message = Msgs.Wrong_Name_Or_Password
+                Message = Msgs.الإسم_او_الرقم_السري_غير_صحيح
             };
         }
         public Returner CreateAdmin()
@@ -32,7 +32,7 @@ namespace FindLosts.Models
             {
                 return new Returner
                 {
-                    Message = Msgs.User_Name_Duplicated
+                    Message = Msgs.يوجد_بالفعل_مدير_بنفس_الإسم
                 };
             }
             db.Moderators.Add(this);
@@ -41,7 +41,7 @@ namespace FindLosts.Models
             return new Returner
             {
                 DataInJson=createdModerator.ToJson(),
-                Message = Msgs.Moderator_Created_Successfully
+                Message = Msgs.تم_تسجيل_المدير_بنجاح
             };
         }
 
@@ -56,7 +56,7 @@ namespace FindLosts.Models
             return new Returner
             {
                 DataInJson=updatedModerator.ToJson(),
-                Message = Msgs.Moderator_Updated_Successfully
+                Message = Msgs.تم_تعديل_المدير_بنجاح
             };
         }
 
@@ -67,7 +67,7 @@ namespace FindLosts.Models
             db.SaveChanges();
             return new Returner
             {
-                Message = Msgs.Moderator_Deleted_Successfully
+                Message = Msgs.تم_حذف_المدير_بنجاح
             };
         }
 

@@ -25,6 +25,9 @@ namespace FindLosts.Controllers
         }
         public ActionResult SearchLosts()
         {
+            LostsEntries lost = new LostsEntries();
+            var result = lost.GetAllLosts().Data;
+            ViewBag.losts = result;
             return View();
         }
 
@@ -38,10 +41,6 @@ namespace FindLosts.Controllers
             lost.OwnerPhone = _Phone;
             lost.OwnerName = _OwnerName;
             lost.Status = 0;
-            Random r = new Random();
-            int num1 = r.Next(1000, 9999);
-            int num2 = r.Next(1000, 9999);
-            lost.Code =(num1.ToString()+"-"+num2.ToString());
             return lost.CreateLostEntry().Message.ShowMessage();
         }
         public string SetLost(int _ID)
@@ -49,6 +48,13 @@ namespace FindLosts.Controllers
             LostsEntries lost = new LostsEntries();
             lost.ID = _ID;
             return lost.SetLost().Message.ShowMessage();
+        }
+
+        public JsonResult Search(string _Code)
+        {
+            LostsEntries lost = new LostsEntries();
+            lost.Code = _Code;
+            return lost.SearchLostsByCode().DataInJson;
         }
     }
 }

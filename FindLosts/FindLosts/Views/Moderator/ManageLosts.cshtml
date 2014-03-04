@@ -18,10 +18,10 @@
                             <tr style="direction: rtl;">
                                 <th style="text-align: center;">اسم المفقود</th>
                                 <th style="text-align: center;">الوصف</th>
-                                  <th style="text-align: center;">الكود</th>
-                                <th style="text-align: center;">اسم المالك</th>
+                                 @* <th style="text-align: center;">الكود</th>*@
+                                @*<th style="text-align: center;">اسم المالك</th>*@
                                   <th style="text-align: center;">رقم هاتف المالك</th>
-                                <th style="text-align: center;">تاريخ الفقد</th>
+                                @*<th style="text-align: center;">تاريخ الفقد</th>*@
                                   <th style="text-align: center;">مكان الفقد</th>
                                 <th style="text-align: center;"></th>
                             </tr>
@@ -33,10 +33,10 @@
                             <tr class="odd gradeX" id="@l.ID"> 
                                 <td>@l.Name</td>
                                 <td>@l.Description</td>
-                                <td>@l.Code</td>
-                                 <td>@l.OwnerName</td>
+                                @*<td>@l.Code</td>*@
+                                 @*<td>@l.OwnerName</td>*@
                                  <td>@l.OwnerPhone</td>
-                                 <td>@l.LostDate</td>
+                                 @*<td>@l.LostDate</td>*@
                                 <td class="center">@l.LostPlace</td>
                                 <td class="center">
                                     <div class="btn-group">
@@ -50,10 +50,10 @@
                                                if(@l.Status==0) 
                                                {
                                             <li>
-                                                <a onclick="SetFound(@l.ID)">SetFound</a>
+                                                <a onclick="SetFound(@l.ID)" style="cursor:pointer">SetFound</a>
                                             </li>
                                             <li>
-                                                <a id="hrefdelete" onclick="Delete(@l.ID)">Delete</a>
+                                                <a id="hrefdelete" onclick="Delete(@l.ID)" style="cursor:pointer">Delete</a>
                                             </li>
                                            @* <li>
                                                 <a href="#">New Card</a>
@@ -66,7 +66,7 @@
                                             }
                                             else{
                                                    <li>
-                                                       <a id="delete" onclick="Delete(@l.ID)">Delete</a>
+                                                       <a id="delete" onclick="Delete(@l.ID)" style="cursor:pointer">Delete</a>
                                                    </li>
                                                }
                                             }

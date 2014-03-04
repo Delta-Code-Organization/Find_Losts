@@ -7,28 +7,16 @@ namespace FindLosts.Models
 {
     public enum Msgs
     {
-        Successful_Login=0,
-        Wrong_Name_Or_Password=1,
-        User_Name_Duplicated=2,
-        Moderator_Created_Successfully=3,
-        Moderator_Updated_Successfully=4,
-        Moderator_Deleted_Successfully =5,
-        No_Results_Found=6,
-        Lost_Entry_Deleted_Successfully=7,
-        Lost_Entry_Updated_Successfully=8,
-        Lost_Entry_Duplicated=9,
-        Lost_Entry_Created_Successfully=10
-        
+        تم_تسجيل_الدخول_بنجاح=0,
+       الإسم_او_الرقم_السري_غير_صحيح=1,
+        يوجد_بالفعل_مدير_بنفس_الإسم=2,
+        تم_تسجيل_المدير_بنجاح=3,
+       تم_تعديل_المدير_بنجاح=4,
+        تم_حذف_المدير_بنجاح=5,
+        لا_يوجد_نتائج_مطابقه_للبحث=6,
+        تم_حذف_المفقود_بنجاح=7,
+      تم_تعديل_المفقود_بنجاح=8,
+      يوجد_بالفعل_مفقود_بهذا_الإسم=9,
+        تم_تسجيل_المفقود_بنجاح=10,
     }
 }
-//تم-تسجيل-الدخول-بنجاح
-//الإسم-أو-الرقم-السري-غير-صحيح
-//يوجد-بالفعل-مدير-بنفس-الإسم
-//تم-تسجيل-المدير-بنجاح
-//تم-تعديل-المدير-بنجاح
-//تم-حذف -المدير-بنجاح
-//لا-يوجد-نتائج-بحث-مطابقة
-//تم-حذف-المفقود-بنجاح
-//تم-تعيل-المفقود-بنجاح
-//يوجد-بالفعل-مفقود-بنفس-الإسم
-//تم-تسجيل-المفقود-بنجاح

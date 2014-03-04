@@ -2,141 +2,77 @@
     ViewBag.Title = "SearchLost";
      Layout = "~/Views/shared/MasterPage.cshtml";
 }
-<script src="~/Scripts/EditCustomer.js"></script>
+@using FindLosts.Models;
+<script src="~/scripts/WebGuestSearch.js"></script>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
         <div class="block-flat">
-            <div class="header">
-                <h3 style="text-align: right;">بحث المفقودات</h3>
-            </div>
-            <div class="content" style="direction: rtl;">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="datatable">
-                        <thead>
-                            <tr style="direction: rtl;">
-                                <th style="text-align: center;">اسم المفقود</th>
-                                <th style="text-align: center;">الوصف</th>
-                                  <th style="text-align: center;">الكود</th>
-                                <th style="text-align: center;">اسم المالك</th>
-                                  <th style="text-align: center;">رقم هاتف المالك</th>
-                                <th style="text-align: center;">تاريخ الفقد</th>
-                                  <th style="text-align: center;">مكان الفقد</th>
-                                @*<th style="text-align: center;"></th>*@
+            <h3 class="spacer-bottom-sm ArabicAlign">بيانات المفقودات</h3>
+            <div class="block-flat no-padding">
+                <div class="content">
+                    <table class="no-border blue">
+                        <thead class="no-border">
+                            <tr>
+                                <th style="width: 25%; text-align: center;">مكان الفقد</th>
+                                <th style="width: 25%; text-align: center;">الوصف</th>
+                                <th style="width: 50%; text-align: center;">اسم المفقود</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        
-                            <tr class="odd gradeX" id="">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                 <td></td>
-                                 <td></td>
-                                @* <td></td>*@
-                                <td class="center"></td>
-                                <td class="center">
-                                   @* <div class="btn-group">*@
-                                       @* <button class="btn btn-default btn-xs" type="button">Actions</button>*@
-                                       @* <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>*@
-                                       @* <ul role="menu" class="dropdown-menu">
-                                            <li>
-                                                <a href="#">Edit</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Check in</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">New Card</a>
-                                            </li>
-                                            <li class="divider">
-                                            </li>
-                                            <li>
-                                                <a onclick="">Remove</a>
-                                            </li>
-                                        </ul>*@
-                                   @* </div>*@
-                                </td>
+                        <tbody class="no-border-x" id="result">
+                              @{
+                                foreach(LostsEntries l in ViewBag.losts)
+                                {
+                            <tr style="text-align: center;">
+                                <td style="width: 16.6%;">@l.LostPlace</td>
+                                
+                                <td>@l.Description</td>
+                                <td class="text-right">@l.Name</td>
                             </tr>
+                              }
+                              }
+                            @*<tr style="text-align: center;">
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">1100</td>
+                                <td class="text-right">محمد</td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">1250</td>
+                                <td class="text-right">احمد</td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">900</td>
+                                <td class="text-right">محمود</td>
+                            </tr>*@
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-md-3">
+        <div class="block-flat">
+            <div class="header">
+                <h3 class="ArabicAlign">البحث</h3>
+            </div>
+            <div class="content">
+                <form class="form-horizontal group-border-dashed" novalidate="" parsley-validate="" action="#" style="border-radius: 0px;">
+                    <div class="block-flat" style="border: none;">
+                        <div class="content">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label Arabic" style="text-align: right; width: 100%;">الكود</label>
+                                <div class="col-sm-12 Arabic">
+                                    <input style="direction: ltr;" class="form-control" size="16" value="" type="text" id="Code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        App.init();
-        App.dataTables();
-    });
-
-    @*var functions = $('<div class="btn-group"><button class="btn btn-default btn-xs" type="button">Actions</button><button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button><ul role="menu" class="dropdown-menu"><li><a href="/Customer/EditCustomer?_ID=@ViewBag.allcustomers.ID">Edit</a></li><li><a href="#">Copy</a></li><li><a href="#">Details</a></li><li class="divider"></li><li><a href="#">Remove</a></li></ul></div>');
-    $("#datatable tbody tr td:last-child").each(function () {
-        $(this).html("");
-        functions.clone().appendTo(this);
-    });*@
-
-    $(document).ready(function () {
-        /* Formating function for row details */
-        function fnFormatDetails(oTable, nTr) {
-            var aData = oTable.fnGetData(nTr);
-            var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-            sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
-            sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-            sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
-            sOut += '</table>';
-
-            return sOut;
-        }
-
-        /*
-         * Insert a 'details' column to the table
-         */
-        var nCloneTh = document.createElement('th');
-        var nCloneTd = document.createElement('td');
-        nCloneTd.innerHTML = '<img class="toggle-details" src="images/plus.png" />';
-        nCloneTd.className = "center";
-
-        $('#datatable2 thead tr').each(function () {
-            this.insertBefore(nCloneTh, this.childNodes[0]);
-        });
-
-        $('#datatable2 tbody tr').each(function () {
-            this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-        });
-
-        /*
-         * Initialse DataTables, with no sorting on the 'details' column
-         */
-        var oTable = $('#datatable2').dataTable({
-            "aoColumnDefs": [
-                { "bSortable": false, "aTargets": [0] }
-            ],
-            "aaSorting": [[1, 'asc']]
-        });
-
-        /* Add event listener for opening and closing details
-         * Note that the indicator for showing which row is open is not controlled by DataTables,
-         * rather it is done here
-         */
-        $('#datatable2').delegate('tbody td img', 'click', function () {
-            var nTr = $(this).parents('tr')[0];
-            if (oTable.fnIsOpen(nTr)) {
-                /* This row is already open - close it */
-                this.src = "images/plus.png";
-                oTable.fnClose(nTr);
-            }
-            else {
-                /* Open this row */
-                this.src = "images/minus.png";
-                oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-            }
-        });
-
-        $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
-        $('.dataTables_length select').addClass('form-control');
-    });
-</script>

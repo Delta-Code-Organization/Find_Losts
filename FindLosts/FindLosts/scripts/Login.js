@@ -8,7 +8,7 @@
                 type: 'post',
                 data: { '_Password': adminPass, '_Name': adminName },
                 success: function (data) {
-                    if (data == "Successful Login")
+                    if (data == "تم تسجيل الدخول بنجاح")
                     {
                         window.location.href = "/Home/Index";
                     }

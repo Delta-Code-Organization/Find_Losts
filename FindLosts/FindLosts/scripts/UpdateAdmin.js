@@ -3,11 +3,10 @@
         if ($(this).parsley('validate')) {
             var adminName = $('#updatenametxt').val();
             var adminPass = $('#updatepasstxt').val();
-            var status = $('#updatestatustxt').val();
             $.ajax({
                 url: '/Moderator/UpdateModerator',
                 type: 'post',
-                data: { '_Password': adminPass, '_Name': adminName,'_Status':status},
+                data: { '_Password': adminPass,'_Name': adminName},
                 success: function (data) {
                     $('#result').text(data);
                 },

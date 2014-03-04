@@ -3,6 +3,7 @@
     Layout = "~/Views/shared/MasterPage.cshtml";
 }
 @using FindLosts.Models;
+<script src="~/scripts/SearchLosts.js"></script>
 <div class="row">
     <div class="col-md-9">
         <div class="block-flat">
@@ -12,55 +13,45 @@
                     <table class="no-border blue">
                         <thead class="no-border">
                             <tr>
-                                @*<th style="width: 16.6%; text-align: center;"></th>*@
-                                <th style="width: 14%; text-align: center;">مكان الفقد</th>
-                                <th style="width: 14%; text-align: center;">تاريخ الفقد</th>
-                                <th style="width: 14%; text-align: center;">هاتف المالك</th>
-                                <th style="width: 14%; text-align: center;">إسم المالك</th>
-                                <th style="width: 14%; text-align: center;">الكود</th>
-                                <th style="width: 14%; text-align: center;">الوصف</th>
-                                <th style="width: 14%; text-align: center;">اسم المفقود</th>
+                                <th style="width: 25%; text-align: center;">مكان الفقد</th>
+                                <th style="width: 25%; text-align: center;">الوصف</th>
+                                <th style="width: 50%; text-align: center;">اسم المفقود</th>
                             </tr>
                         </thead>
-                        <tbody class="no-border-x">
-                            @{
+                        <tbody class="no-border-x" id="results">
+                              @{
                                 foreach(LostsEntries l in ViewBag.losts)
                                 {
                             <tr style="text-align: center;">
                                 <td style="width: 16.6%;">@l.LostPlace</td>
-                                   @* <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-edit "></i>تعديل</button></td>*@
-                                <td style="width: 16.6%;">@l.LostDate</td>
-                                <td>@l.OwnerPhone</td>
-                                <td>@l.OwnerName</td>
-                                <td>@l.Code</td>
+                                
                                 <td>@l.Description</td>
                                 <td class="text-right">@l.Name</td>
                             </tr>
+                              }
+                              }
+
                             @*<tr style="text-align: center;">
-                                  <td style="width: 16.6%;">pl</td>
-                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-edit "></i>تعديل</button></td>
-                                <td style="width: 16.6%;">da</td>
-                                <td>ph</td>
-                                <td>na</td>
-                                <td>cc</td>
-                                <td>dd</td>
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">1100</td>
                                 <td class="text-right">محمد</td>
-                                
                             </tr>
                             <tr style="text-align: center;">
-                                <td style="width: 16.6%;">pl</td>
-                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-edit "></i>تعديل</button></td>
-                                <td style="width: 16.6%;">da</td>
-                                <td>ph</td>
-                                <td>na</td>
-                                <td>cc</td>
-                                <td>dd</td>
-                                <td class="text-right">محمد</td>
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">1250</td>
+                                <td class="text-right">احمد</td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td style="width: 25%;">
+                                    <button data-toggle="modal" data-target="#mod-info" type="button" class="btn btn-primary"><i class="fa fa-question-circle"></i>عرض التفاصيل</button></td>
+                                <td style="width: 25%;">900</td>
+                                <td class="text-right">محمود</td>
                             </tr>*@
-                            }
-                            }
                         </tbody>
                     </table>
+                    <div class="resultmsg" style="text-align:center;color:blue;"><label id="result"></label></div>
                 </div>
             </div>
         </div>
@@ -75,15 +66,17 @@
                     <div class="block-flat" style="border: none;">
                         <div class="content">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label Arabic" style="text-align: right; width: 100%;">اسم المفقود</label>
+                                <label class="col-sm-3 control-label Arabic" style="text-align: right; width: 100%;" >اسم المفقود</label>
                                 <div class="col-sm-12 Arabic">
-                                    <input style="direction: ltr;" class="form-control" size="16" value="" type="text">
+                                    <input style="direction: ltr;" class="form-control" size="16" value="" type="text" id="LostName">
                                 </div>
                             </div>
-                             <div class="form-group">
-                                <label class="col-sm-3 control-label Arabic" style="text-align: right; width: 100%;">الكود</label>
+                        </div>
+                        <div class="content">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label Arabic" style="text-align: right; width: 100%;" >الكود</label>
                                 <div class="col-sm-12 Arabic">
-                                    <input style="direction: ltr;" class="form-control" size="16" value="" type="text">
+                                    <input style="direction: ltr;" class="form-control" size="16" value="" type="text" id="LostCode">
                                 </div>
                             </div>
                         </div>
@@ -93,38 +86,6 @@
         </div>
     </div>
 </div>
-
-@*<div aria-hidden="true" style="display: none;" class="modal fade" id="mod-info" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form class="form-horizontal" role="form" novalidate="" parsley-validate="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label Arabic" style="text-align: center;">من</label>
-                        <div class="col-sm-10 Arabic">
-                            <input data-mask="hour" data-date="2014-01-01T05:25:07Z" data-link-field="dtp_input1" data-start-view="1" data-show-meridian="true" class="form-control hours parsley-validated parsley-error" parsley-trigger="change" required="" parsley-required-message="يجب ادخال وقت بداية الوردية" size="16" value="" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label Arabic" style="text-align: center;">الي</label>
-                        <div class="col-sm-10 Arabic">
-                            <input data-mask="hour" data-date="2014-01-01T05:25:07Z" data-link-field="dtp_input1" data-start-view="1" data-show-meridian="true" class="form-control hours parsley-validated parsley-error" parsley-trigger="change" required="" parsley-required-message="يجب ادخال وقت نهاية الوردية" size="16" value="" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-primary">تعديل</button>
-                </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>*@
 
 
 

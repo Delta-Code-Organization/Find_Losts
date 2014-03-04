@@ -2,7 +2,7 @@
     ViewBag.Title = "CreateNewLost";
      Layout = "~/Views/shared/MasterPage.cshtml";
 }
-
+<script src="~/scripts/CreateNewLost.js"></script>
 <div class="row">
     <div class="col-md-12">
         <div class="block-flat">
@@ -17,14 +17,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align:center;">تاريخ الفقد</label>
                                     <div class="col-sm-6 Arabic">
-                                        <input style="direction:ltr;" data-mask="datetime" id="custbirthdate" class="form-control datetime parsley-validated parsley-error" parsley-trigger="change" required="" parsley-required-message="يجب ادخال التاريخ" size="16" value="" type="text">
+                                        <input style="direction:ltr;" data-mask="datetime" id="lostdate" class="form-control datetime parsley-validated parsley-error" parsley-trigger="change" required="" parsley-required-message="يجب ادخال التاريخ" size="16" value="" type="text">
                                     </div>
                                 </div>
                                 @*مكان الفقد*@
                                  <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">مكان الفقد</label>
                                     <div class="col-sm-6 Arabic">
-                                        <input class="form-control parsley-validated parsley-error" id="custname" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال المكان" type="text" />
+                                        <input class="form-control parsley-validated parsley-error" id="lostplace" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال المكان" type="text" />
                                     </div>
                                      
                                       @*مكان الفقد*@
@@ -60,13 +60,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">اسم المفقود</label>
                                     <div class="col-sm-6 Arabic">
-                                        <input class="form-control parsley-validated parsley-error" id="custname" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الاسم" type="text" />
+                                        <input class="form-control parsley-validated parsley-error" id="lostname" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الاسم" type="text" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">الوصف</label>
                                     <div class="col-sm-6 Arabic">
-                                        <textarea id="custnotes" class="form-control" parsley-validated parsley-error" id="lostdescription" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الوصف"></textarea>
+                                        <textarea class="form-control" parsley-validated parsley-error" id="lostdescription" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الوصف"></textarea>
                                     </div>
                                     </div>
                                 <div class="form-group">
@@ -79,7 +79,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">اسم المالك</label>
                                     <div class="col-sm-6 Arabic">
-                                        <input class="form-control parsley-validated parsley-error" id="custname" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الاسم" type="text" />
+                                        <input class="form-control parsley-validated parsley-error" id="ownername" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الاسم" type="text" />
                                     </div>
                                     </div>
                                       @*مكان الفقد*@
@@ -107,13 +107,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="resultmsg" style="text-align:center;color:blue;"><label id="result"></label></div>
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary">حفظ</button>
                             <button type="button" onclick="Cancel()" class="btn btn-default">الغاء</button>
                         </div>
                     </div>
                 </form>
-                <div class="resultmsg" style="text-align:center;color:blue;"><label id="result"></label></div>
             </div>
         </div>
     </div>
