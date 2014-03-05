@@ -7,10 +7,24 @@
                 url: '/Moderator/UpdateModerator',
                 type: 'post',
                 data: { '_Password': adminPass,'_Name': adminName},
-                success: function (data) {
-                    $('#result').text(data);
+                beforeSend: function () {
+                    $('#save').prop("disabled", true)
                 },
-                erro: function (data) {
+                success: function (data) {
+                    $.gritter.add({
+                        title: '!نجاح العملية',
+                        text: data,
+                        image: '/content/images/user-icon.png',
+                        time: ''
+                    });
+                    setTimeout(function () {
+                        $('#save').prop("disabled", false)
+                    }, 1500);
+                    setInterval(function () {
+                        window.location.href = "/Moderator/ManageAdmins"
+                    }, 1000);
+                },
+                error: function (data) {
                     alert(data.responseText);
                 }
             });

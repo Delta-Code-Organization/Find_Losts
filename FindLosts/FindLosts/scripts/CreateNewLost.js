@@ -11,8 +11,22 @@
                 url: '/WebGuest/CreateNewEntry',
                 type: 'post',
                 data: { '_LostDate': lostDate, '_LostPlace': lostPlace, '_LostName': lostName, '_Description': description, '_Phone': phone, '_OwnerName': ownerName },
+                beforeSend: function () {
+                    $('#save').prop("disabled", true)
+                },
                 success: function (data) {
-                    $('#result').text(data);
+                    $.gritter.add({
+                        title: '!نجاح العملية',
+                        text: data,
+                        image: '/content/images/user-icon.png',
+                        time: ''
+                    });
+                    setTimeout(function () {
+                        $('#save').prop("disabled", false)
+                    }, 5000);
+                    setInterval(function () {
+                        window.location.href = "/WebGuest/CreateNewLost"
+                    }, 1000);
                 },
                 error: function (data) {
                     alert(data.responseText);

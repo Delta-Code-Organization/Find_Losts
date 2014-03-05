@@ -124,22 +124,26 @@ namespace FindLosts.Controllers
         }
         public JsonResult SearchResult(string _Name,string _Code)
         {
+            List<LostsEntries> LOLE = new List<LostsEntries>();
             LostsEntries lost = new LostsEntries();
             if (_Name != "" && _Code == "")
             {
                 lost.Name = _Name;
-             return lost.SearchLostsByName().DataInJson;
+              LOLE.AddRange(lost.SearchLostsByName().Data as List<LostsEntries>);
+              return LOLE.ToJson();
             }
             if (_Name == "" && _Code != "")
             {
                 lost.Code=_Code;
-                return lost.SearchLostsByCode().DataInJson;
+                LOLE.Add(lost.SearchLostsByCode().Data as LostsEntries);
+                return LOLE.ToJson();
             }
             if (_Name != "" && _Code != "")
             {
                 lost.Name = _Name;
                 lost.Code = _Code;
-                return lost.SearchLostsByNameAndCode().DataInJson;
+                LOLE.Add(lost.SearchLostsByCode().Data as LostsEntries);
+                return LOLE.ToJson();
             }
             return new JsonResult();
         }

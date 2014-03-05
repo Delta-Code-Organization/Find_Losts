@@ -16,6 +16,7 @@ namespace FindLosts.Models
                 var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code && p.Name == this.Name).SingleOrDefault();
                 return new Returner
                 {
+                    Data=lostEntry,
                     DataInJson = lostEntry.ToJson()
                 };
             }
@@ -74,7 +75,7 @@ namespace FindLosts.Models
               var exist = db.LostsEntries.Any(p => p.Name == this.Name);
               if (exist == true)
               {
-                  var lostEntry = db.LostsEntries.Where(p =>  p.Name == this.Name).SingleOrDefault();
+                  var lostEntry = db.LostsEntries.Where(p =>  p.Name == this.Name).ToList();
                   return new Returner
                   {
                       Data=lostEntry,
@@ -95,6 +96,7 @@ namespace FindLosts.Models
                   var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code).SingleOrDefault();
                   return new Returner
                   {
+                      Data=lostEntry,
                       DataInJson = lostEntry.ToJson()
                   };
               }

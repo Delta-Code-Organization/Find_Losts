@@ -50,7 +50,6 @@ namespace FindLosts.Models
             var moderator =db.Moderators.Where(p => p.ID == this.ID).SingleOrDefault();
             moderator.UserName = this.UserName;
             moderator.Password = this.Password;
-            moderator.Status = this.Status;
             db.SaveChanges();
             var updatedModerator=db.Moderators.Where(p => p.ID == this.ID).SingleOrDefault();
             return new Returner

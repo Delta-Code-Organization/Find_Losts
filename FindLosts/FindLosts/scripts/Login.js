@@ -12,7 +12,14 @@
                     {
                         window.location.href = "/Home/Index";
                     }
-                    $('#result').text(data);
+                    //$.gritter.add({
+                    //    title: '!نجاح العملية',
+                    //    text: data,
+                    //    image: '/content/images/user-icon.png',
+                    //    time: ''
+                //});
+                    $$('#result').text(data);
+                  
                 },
                 error: function (data) {
                     alert(data.responseText);

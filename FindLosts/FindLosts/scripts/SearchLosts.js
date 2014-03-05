@@ -7,16 +7,14 @@
             type: 'post',
             data: { '_Name': name, '_Code': code },
             success: function (data) {
-                //if (data !=undefined) {
-                    $('#results').html('<tr style="text-align: center;">'
-                                   + '<td style="width: 16.6%;">' + data.LostPlace + '</td>'
-                                   + '<td>' + data.Description + '</td>'
-                                   + '<td class="text-right">' + data.Name + '</td>'
+                $('#results').empty();
+                $.each(data, function (Index, res) {
+                    $('#results').append('<tr style="text-align: center;">'
+                                   + '<td style="width: 16.6%;">' + res.LostPlace + '</td>'
+                                   + '<td>' + res.Description + '</td>'
+                                   + '<td class="text-right">' + res.Name + '</td>'
                                + '</tr>')
-               // }
-                //else {
-                //    $('#result').text("لا يوجد نتائج مطابقه للبحث");
-                //}
+                });
             },
             error: function (data) {
             alert(data.responseText);

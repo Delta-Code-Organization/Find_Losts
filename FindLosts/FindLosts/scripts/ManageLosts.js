@@ -19,8 +19,15 @@ function SetFound(_ID) {
         type: 'post',
         data: { '_ID': _ID },
         success: function (data) {
-            $('#result').text(data);
-            setInterval(window.location.href="/Moderator/ManageLosts",5000);
+            $.gritter.add({
+                title: '!نجاح العملية',
+                text: data,
+                image: '/content/images/user-icon.png',
+                time: ''
+            });
+            setInterval(function () {
+                window.location.href = "/Moderator/ManageLosts"
+            },1000);
         },
         error: function (data) {
             alert(data.responseText);
