@@ -8,17 +8,17 @@
                 type: 'post',
                 data: { '_Password': adminPass, '_Name': adminName },
                 success: function (data) {
-                    if (data == "تم تسجيل الدخول بنجاح")
-                    {
+                    if (data == "تم تسجيل الدخول بنجاح") {
                         window.location.href = "/Home/Index";
                     }
-                    //$.gritter.add({
-                    //    title: '!نجاح العملية',
-                    //    text: data,
-                    //    image: '/content/images/user-icon.png',
-                    //    time: ''
-                //});
-                    $$('#result').text(data);
+                    else {
+                        $.gritter.add({
+                                title: '!فشل العملية',
+                                text: data,
+                                image: '/content/images/user-icon.png',
+                                time: ''
+                            });
+                    }
                   
                 },
                 error: function (data) {

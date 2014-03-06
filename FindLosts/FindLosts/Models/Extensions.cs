@@ -11,6 +11,11 @@ namespace FindLosts.Models
         {
             return msg.ToString().Replace("_"," ");
         }
+        public static string ShowStatus(this string msg)
+        {
+            return msg.ToString().Replace("_", " ");
+        }
+
         public static JsonResult ToJson(this object obj)
         {
             JsonResult JR = new JsonResult

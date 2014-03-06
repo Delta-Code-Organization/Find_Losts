@@ -90,7 +90,7 @@
             <div class="cl-navblock">
                 <div class="menu-space">
                     <div class="content">
-                        <div class="side-user">
+                        @*<div class="side-user">
                             <div class="avatar">
                                 <img src="/content/images/avatar1_50.jpg" alt="Avatar" /></div>
                             <div class="info">
@@ -98,14 +98,30 @@
                                 <img src="/content/images/state_online.png" alt="Status" />
                                 <span>Online</span>
                             </div>
-                        </div>
+                        </div>*@
                         <ul class="cl-vnavigation">
-                            <li class="active"><a href="index.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                            <li><a href="#"><i class="fa fa-desktop"></i><span>Layouts</span></a>
+                           @* <li class="active"><a href="index.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>*@
+                            <li><a href="#"><i class="fa fa-desktop"></i><span>المديرين</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="layouts-sidebar.html">Sidebar</a></li>
+                                     <li><a href="/Moderator/Login">تسجيل الدخول</a></li>
+                                    <li><a href="/Moderator/CreateLost">إنشاء مفقود جديد</a></li>
+                                    <li><a href="/Moderator/ManageLosts">إدارة المفقودات</a></li>
+                                    <li><a href="/Moderator/SearchLosts">بحث المفقودات</a></li>
+                                    <li><a href="/Moderator/CreateAdmin">اضافة مدير جديد</a></li>
+                                    <li><a href="/Moderator/ManageAdmins">إدارة المديرين</a></li>
                                 </ul>
-                            </li>
+                                 <li><a href="#"><i class="fa fa-desktop"></i><span>Terminal</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="/TerminalGuest/CreateLost">إنشاء مفقود جديد</a></li>
+                                    <li><a href="/TerminalGuest/SearchLosts">بحث المفقودات</a></li>
+                                    <li><a href="/TerminalGuest/CreateFoundEntry">إدارة المفقودات</a></li>
+                                </ul>
+                                  <li><a href="#"><i class="fa fa-desktop"></i><span>المستخدمين</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="/WebGuest/CreateNewLost">إنشاء مفقود جديد</a></li>
+                                    <li><a href="/WebGuest/SearchLost">بحث المفقودات</a></li>
+                                </ul> 
+                            @*</li>
                             <li><a href="#"><i class="fa fa-smile-o"></i><span>UI Elements</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="ui-elements.html">General</a></li>
@@ -158,7 +174,7 @@
                                     <li><a href="pages-gallery.html"><span class="label label-primary pull-right">New</span>Gallery</a></li>
                                     <li><a href="pages-timeline.html"><span class="label label-primary pull-right">New</span>Timeline</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                         </ul>
                     </div>
                 </div>

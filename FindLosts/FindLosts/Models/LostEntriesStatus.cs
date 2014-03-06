@@ -7,7 +7,7 @@ namespace FindLosts.Models
 {
     public enum LostEntriesStatus
     {
-         Not_Found=0,
-        Found=1
+         لم_يتم_العثور_عليه=0,
+        تم_العثور_عليه=1
     }
 }

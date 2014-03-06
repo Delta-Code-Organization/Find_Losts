@@ -13,9 +13,10 @@
                     <table class="no-border blue">
                         <thead class="no-border" >
                             <tr>
+                                <th style="width: 25%; text-align: center;">الحاله</th>
                                 <th style="width: 25%; text-align: center;">مكان الفقد</th>
                                 <th style="width: 25%; text-align: center;">الوصف</th>
-                                <th style="width: 50%; text-align: center;">اسم المفقود</th>
+                                <th style="width: 25%; text-align: center;">اسم المفقود</th>
                             </tr>
                         </thead>
                         <tbody class="no-border-x" id="result">
@@ -23,8 +24,8 @@
                                 foreach(LostsEntries l in ViewBag.losts)
                                 {
                             <tr style="text-align: center;">
+                                 <td style="width: 16.6%;">@((Enum.GetName(typeof(LostEntriesStatus),l.Status)).ShowStatus())</td>
                                 <td style="width: 16.6%;">@l.LostPlace</td>
-                                
                                 <td>@l.Description</td>
                                 <td class="text-right">@l.Name</td>
                             </tr>

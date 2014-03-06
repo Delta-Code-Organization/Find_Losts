@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="block-flat">
             <div class="header">
-                <h3 style="text-align: right;">بحث المفقودات</h3>
+                <h3 style="text-align: right;">إدارة المفقودات</h3>
             </div>
            
             <div class="content" style="direction: rtl;">
@@ -50,10 +50,10 @@
                                                if(@l.Status==0) 
                                                {
                                             <li>
-                                                <a onclick="SetFound(@l.ID)" style="cursor:pointer" id="save">SetFound</a>
+                                                <a onclick="SetFound(@l.ID)" style="cursor:pointer" id="save">تم العثور عليها</a>
                                             </li>
                                             <li>
-                                                <a id="hrefdelete" onclick="Delete(@l.ID)" style="cursor:pointer">Delete</a>
+                                                <a id="hrefdelete" onclick="Delete(@l.ID)" style="cursor:pointer">حذف</a>
                                             </li>
                                            @* <li>
                                                 <a href="#">New Card</a>
@@ -66,7 +66,7 @@
                                             }
                                             else{
                                                    <li>
-                                                       <a id="delete" onclick="Delete(@l.ID)" style="cursor:pointer">Delete</a>
+                                                       <a id="delete" onclick="Delete(@l.ID)" style="cursor:pointer">حذف</a>
                                                    </li>
                                                }
                                             }

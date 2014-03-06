@@ -11,12 +11,22 @@
                     $('#save').prop("disabled", true)
                 },
                 success: function (data) {
-                    $.gritter.add({
-                        title: '!نجاح العملية',
-                        text: data,
-                        image: '/content/images/user-icon.png',
-                        time:''
-                    });
+                    if (data == "تم تسجيل المدير بنجاح") {
+                        $.gritter.add({
+                            title: '!نجاح العملية',
+                            text: data,
+                            image: '/content/images/user-icon.png',
+                            time: ''
+                        });
+                    }
+                    else {
+                        $.gritter.add({
+                            title: '!فشل العملية',
+                            text: data,
+                            image: '/content/images/user-icon.png',
+                            time: ''
+                        });
+                    }
                     setTimeout(function () {
                         $('#save').prop("disabled", false)
                     }, 1500);

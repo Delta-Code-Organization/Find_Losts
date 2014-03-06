@@ -15,9 +15,10 @@
                     $('#save').prop("disabled", true)
                 },
                 success: function (data) {
+                    alert(data.Code + " " + "هذا الكود للاستعلام عن المفقود");
                     $.gritter.add({
                         title: '!نجاح العملية',
-                        text: data,
+                        text: "تم تسجيل المفقود بنجاح",
                         image: '/content/images/user-icon.png',
                         time: ''
                     });

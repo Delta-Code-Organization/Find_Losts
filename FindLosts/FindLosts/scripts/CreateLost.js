@@ -18,10 +18,11 @@
                     setInterval($('#save').prop("disabled", false), 5000);
                     $.gritter.add({
                         title: '!نجاح العملية',
-                        text: data,
+                        text:"تم تسجيل المفقود بنجاح",
                         image: '/content/images/user-icon.png',
                         time: ''
                     });
+                    alert(data.Code + " " + "هذا الكود للاستعلام عن المفقود");
                     setTimeout(function () {
                         $('#save').prop("disabled", false)
                     }, 5000);

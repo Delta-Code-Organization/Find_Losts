@@ -9,11 +9,22 @@
             success: function (data) {
                 $('#results').empty();
                 $.each(data, function (Index, res) {
-                    $('#results').append('<tr style="text-align: center;">'
-                                   + '<td style="width: 16.6%;">' + res.LostPlace + '</td>'
-                                   + '<td>' + res.Description + '</td>'
-                                   + '<td class="text-right">' + res.Name + '</td>'
-                               + '</tr>')
+                    if (res.Status == 0) {
+                        $('#results').append('<tr style="text-align: center;">'
+                             + '<td style="width: 16.6%;">لم يتم العثور عليها</td>'
+                                       + '<td style="width: 16.6%;">' + res.LostPlace + '</td>'
+                                       + '<td>' + res.Description + '</td>'
+                                       + '<td class="text-right">' + res.Name + '</td>'
+                                   + '</tr>')
+                    }
+                    else {
+                        $('#results').append('<tr style="text-align: center;">'
+                            + '<td style="width: 16.6%;">تم العثور عليها</td>'
+                                      + '<td style="width: 16.6%;">' + res.LostPlace + '</td>'
+                                      + '<td>' + res.Description + '</td>'
+                                      + '<td class="text-right">' + res.Name + '</td>'
+                                  + '</tr>')
+                    }
                 });
             },
             error: function (data) {
@@ -22,3 +33,12 @@
         });
     }
 });
+
+function isEmpty(obj) {
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return true;
+}

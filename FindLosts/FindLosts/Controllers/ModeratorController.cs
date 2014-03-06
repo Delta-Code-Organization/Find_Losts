@@ -18,10 +18,18 @@ namespace FindLosts.Controllers
         }
         public ActionResult CreateAdmin()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             return View();
         }
         public ActionResult ManageAdmins()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             Moderators moderator = new Moderators();
            var result =moderator.GetAllModerators().Data;
            ViewBag.moderators = result;
@@ -29,6 +37,10 @@ namespace FindLosts.Controllers
         }
         public ActionResult SearchLosts()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             LostsEntries lost = new LostsEntries();
             var result = lost.GetAllLosts().Data;
             ViewBag.losts = result;
@@ -36,6 +48,10 @@ namespace FindLosts.Controllers
         }
         public ActionResult ManageLosts()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             LostsEntries lost = new LostsEntries();
             var result = lost.GetAllLosts().Data;
             ViewBag.losts = result;
@@ -43,10 +59,18 @@ namespace FindLosts.Controllers
         }
         public ActionResult CreateLost()
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             return View();
         }
         public ActionResult UpdateAdmin(int _ID)
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Moderator");
+            }
             Moderators moderator = new Moderators();
             moderator.ID = _ID;
             var result=moderator.GetModerator().Data;
@@ -65,7 +89,7 @@ namespace FindLosts.Controllers
          return moderator.CreateAdmin().Message.ShowMessage();
         }
 
-        public string CreateLosts(DateTime _LostDate, string _LostPlace, string _LostName, string _Description, string _Phone, string _OwnerName)
+        public JsonResult CreateLosts(DateTime _LostDate, string _LostPlace, string _LostName, string _Description, string _Phone, string _OwnerName)
         {
             LostsEntries lost = new LostsEntries();
             lost.LostDate = _LostDate;
@@ -75,7 +99,7 @@ namespace FindLosts.Controllers
             lost.OwnerPhone = _Phone;
             lost.OwnerName = _OwnerName;
             lost.Status = 0;
-          return lost.CreateLostEntry().Message.ShowMessage();
+          return lost.CreateLostEntry().DataInJson;
         }
 
         public string DeleteLost(int _ID)
@@ -125,12 +149,21 @@ namespace FindLosts.Controllers
         public JsonResult SearchResult(string _Name,string _Code)
         {
             List<LostsEntries> LOLE = new List<LostsEntries>();
+            List<LostsEntries> LOL = new List<LostsEntries>();
             LostsEntries lost = new LostsEntries();
             if (_Name != "" && _Code == "")
             {
                 lost.Name = _Name;
-              LOLE.AddRange(lost.SearchLostsByName().Data as List<LostsEntries>);
-              return LOLE.ToJson();
+                LOL=lost.SearchLostsByName().Data as List<LostsEntries>;
+                if (LOL==null)
+                {
+                    return Json("لا يوجد نتائج مطابقة للبحث");
+                }
+                else
+                {
+                    LOLE.AddRange(LOL);
+                    return LOLE.ToJson();
+                }
             }
             if (_Name == "" && _Code != "")
             {
@@ -142,7 +175,7 @@ namespace FindLosts.Controllers
             {
                 lost.Name = _Name;
                 lost.Code = _Code;
-                LOLE.Add(lost.SearchLostsByCode().Data as LostsEntries);
+                LOLE.Add(lost.SearchLostsByNameAndCode().Data as LostsEntries);
                 return LOLE.ToJson();
             }
             return new JsonResult();

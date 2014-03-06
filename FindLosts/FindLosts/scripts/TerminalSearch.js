@@ -10,15 +10,25 @@
                 if (isEmpty(data)) {
                     $('#result').empty();
                     $.gritter.add({
-                        title: '!نجاح العملية',
+                        title: '!فشل العملية',
                         text: "لا يوجد نتائج للبحث",
                         image: '/content/images/user-icon.png',
-                        time: '1000'
+                        time: '700'
                     });
+                }
+                else if (data.Status == 0) {
+
+                    $('#result').html('<tr style="text-align: center;">'
+                        + '<td style="width: 16.6%;">لم يتم العثور عليها</td>'
+                                 + '<td style="width: 16.6%;">' + data.LostPlace + '</td>'
+                                 + '<td>' + data.Description + '</td>'
+                                 + '<td class="text-right">' + data.Name +
+                                 '</td>')
                 }
                 else {
                     $('#result').html('<tr style="text-align: center;">'
-                                 + '<td style="width: 16.6%;">' + data.Code + '</td>'
+                        + '<td style="width: 16.6%;">تم العثور عليها</td>'
+                                 + '<td style="width: 16.6%;">' + data.LostPlace + '</td>'
                                  + '<td>' + data.Description + '</td>'
                                  + '<td class="text-right">' + data.Name +
                                  '</td>')

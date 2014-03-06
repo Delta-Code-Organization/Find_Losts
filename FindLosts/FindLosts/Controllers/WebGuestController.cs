@@ -24,7 +24,7 @@ namespace FindLosts.Controllers
             return View();
         }
 
-        public string CreateNewEntry(DateTime _LostDate, string _LostPlace, string _LostName, string _Description, string _Phone, string _OwnerName)
+        public JsonResult CreateNewEntry(DateTime _LostDate, string _LostPlace, string _LostName, string _Description, string _Phone, string _OwnerName)
         {
             LostsEntries lost = new LostsEntries();
             lost.LostDate = _LostDate;
@@ -34,7 +34,7 @@ namespace FindLosts.Controllers
             lost.OwnerPhone = _Phone;
             lost.OwnerName = _OwnerName;
             lost.Status = 0;
-            return lost.CreateLostEntry().Message.ShowMessage();
+            return lost.CreateLostEntry().DataInJson;
         }
         public JsonResult EntriesSearch(string _Code)
         {
