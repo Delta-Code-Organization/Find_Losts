@@ -18,10 +18,7 @@
                             <tr style="direction: rtl;">
                                 <th style="text-align: center;">اسم المفقود</th>
                                 <th style="text-align: center;">الوصف</th>
-                                 @* <th style="text-align: center;">الكود</th>*@
-                                @*<th style="text-align: center;">اسم المالك</th>*@
                                   <th style="text-align: center;">رقم هاتف المالك</th>
-                                @*<th style="text-align: center;">تاريخ الفقد</th>*@
                                   <th style="text-align: center;">مكان الفقد</th>
                                 <th style="text-align: center;"></th>
                             </tr>
@@ -33,14 +30,11 @@
                             <tr class="odd gradeX" id="@l.ID"> 
                                 <td>@l.Name</td>
                                 <td>@l.Description</td>
-                                @*<td>@l.Code</td>*@
-                                 @*<td>@l.OwnerName</td>*@
                                  <td>@l.OwnerPhone</td>
-                                 @*<td>@l.LostDate</td>*@
                                 <td class="center">@l.LostPlace</td>
                                 <td class="center">
                                     <div class="btn-group">
-                                        <button class="btn btn-default btn-xs" type="button">Actions</button>
+                                        <button class="btn btn-default btn-xs" type="button">الإجراءات</button>
                                         <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
@@ -55,14 +49,6 @@
                                             <li>
                                                 <a id="hrefdelete" onclick="Delete(@l.ID)" style="cursor:pointer">حذف</a>
                                             </li>
-                                           @* <li>
-                                                <a href="#">New Card</a>
-                                            </li>
-                                            <li class="divider">
-                                            </li>
-                                            <li>
-                                                <a onclick="">Remove</a>
-                                            </li>*@
                                             }
                                             else{
                                                    <li>

@@ -17,8 +17,6 @@
                             <tr style="direction: rtl;">
                                 <th style="text-align: center;">اسم المدير</th>
                                 <th style="text-align: center;">الرقم السري</th>
-                                @*<th style="text-align: center;">رقم الهاتف</th>
-                                <th style="text-align: center;">تاريخ الميلاد</th>*@
                                 <th style="text-align: center;"></th>
                             </tr>
                         </thead>
@@ -29,11 +27,9 @@
                             <tr class="odd gradeX" id="@m.ID">
                                 <td>@m.UserName</td>
                                 <td>@m.Password</td>
-                                @*<td></td>*@
-                                @*<td class="center"></td>*@
                                 <td class="center">
                                     <div class="btn-group">
-                                        <button class="btn btn-default btn-xs" type="button">Actions</button>
+                                        <button class="btn btn-default btn-xs" type="button">الإجراءات</button>
                                         <button data-toggle="dropdown" class="btn btn-xs btn-primary dropdown-toggle" type="button">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
@@ -45,14 +41,6 @@
                                             <li>
                                                 <a  onclick="DeleteAdmin(@m.ID)" style="cursor:pointer">حذف</a>
                                             </li>
-                                            @*<li>
-                                                <a href="#">New Card</a>
-                                            </li>
-                                            <li class="divider">
-                                            </li>
-                                            <li>
-                                                <a onclick="">Remove</a>
-                                            </li>*@
                                         </ul>
                                     </div>
                                 </td>

@@ -20,35 +20,11 @@
                                         <input style="direction:ltr;" data-mask="datetime" id="lostdate" class="form-control datetime parsley-validated parsley-error" parsley-trigger="change" required="" parsley-required-message="يجب ادخال التاريخ" size="16" value="" type="text">
                                     </div>
                                 </div>
-                                @*مكان الفقد*@
                                  <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">مكان الفقد</label>
                                     <div class="col-sm-6 Arabic">
                                         <input class="form-control parsley-validated parsley-error" id="lostplace" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال المكان" type="text" />
                                     </div>
-                                      @*مكان الفقد*@
-                              @*  <div class="form-group">
-                                    <label class="col-sm-3 control-label Arabic" style="text-align: center;">النوع</label>
-                                    <div class="col-sm-6 Arabic">
-                                        <label class="radio-inline">
-                                            <div aria-disabled="false" aria-checked="false" style="position: relative;" class="iradio_square-blue">
-                                                <input style="position: absolute; opacity: 0;" name="rad1" id="custfemale" class="icheck" type="radio">
-                                                <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 0px none; opacity: 0;"  class="iCheck-helper"></ins>
-                                            </div>
-                                            انثي</label>
-                                        <label class="radio-inline">
-                                            <div aria-disabled="false" aria-checked="true" style="position: relative;" class="iradio_square-blue">
-                                                <input checked="" style="position: absolute; opacity: 0;" name="rad1" id="custmale" class="icheck" type="radio">
-                                                <ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 0px none; opacity: 0;"  class="iCheck-helper"></ins>
-                                            </div>
-                                            ذكر</label>
-                                    </div>
-                                </div>*@
-                              @*  <div class="form-group">
-                                    <label class="col-sm-3 control-label Arabic" style="text-align: center;">بيانات اخري</label>
-                                    <div class="col-sm-6 Arabic">
-                                        <textarea id="custnotes" class="form-control"></textarea>
-                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -67,11 +43,6 @@
                                     <div class="col-sm-6 Arabic">
                                         <textarea  class="form-control" parsley-validated parsley-error" id="lostdescription" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الوصف"></textarea>
                                     </div>
-                               @* <div class="form-group">
-                                    <label class="col-sm-3 control-label Arabic" style="text-align: center;">الوصف</label>
-                                    <div class="col-sm-6 Arabic">
-                                        <input class="form-control parsley-validated parsley-error" id="lostdescription" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الوصف" type="text">
-                                    </div>*@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">رقم هاتف المالك</label>
@@ -79,34 +50,12 @@
                                         <input id="PhoneMask" data-mask="mobile" class="form-control parsley-validated parsley-error" placeholder="999-9999-9999" parsley-trigger="change" required="" parsley-error-message="يجب ادخال رقم الهاتف" type="text">
                                     </div>
                                 </div>
-                                  @*مكان الفقد*@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label Arabic" style="text-align: center;">اسم المالك</label>
                                     <div class="col-sm-6 Arabic">
                                         <input class="form-control parsley-validated parsley-error" id="ownername" name="nick" parsley-trigger="change" required="" parsley-error-message="يجب ادخال الاسم" type="text" />
                                     </div>
                                     </div>
-                                      @*مكان الفقد*@
-                              @*   <div class="form-group">
-                        <label class="col-sm-3 control-label Arabic" style="text-align: center;">القائمة</label>
-                        <div class="col-sm-6 Arabic">
-                            <select id="listname" class="form-control">
-                                @{
-                                    <option value="9000"></option>
-                                    foreach (PriceLists p in ViewBag.allpricelists)
-                                    {
-                                    <option value="@p.ID">@p.ListName</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-                    </div>*@
-                               @* <div class="form-group">
-                                <label class="col-sm-3 control-label Arabic" style="text-align: center;" >الكود</label>
-                                <div class="col-sm-6 Arabic">
-                                    <input data-mask="cardnumber" class="form-control" name="nick" id="Code" parsley-trigger="change" required="" parsley-error-message="يجب ادخال رقم العميل" type="text" />
-                                </div>
-                            </div>*@
                             </div>
                         </div>
                     </div>
