@@ -13,11 +13,12 @@
                     }
                     else {
                         $.gritter.add({
-                                title: '!فشل العملية',
-                                text: data,
-                                image: '/content/images/user-icon.png',
-                                time: ''
-                            });
+                            title: '!فشل العملية',
+                            text: data,
+                            image: '/content/images/user-icon.png',
+                            class_name: 'clean',
+                            time: ''
+                        });
                     }
                   
                 },
