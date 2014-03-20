@@ -54,7 +54,12 @@ namespace FindLosts.Controllers
         {
             LostsEntries lost = new LostsEntries();
             lost.Code = _Code;
-            return lost.SearchLostsByCode().DataInJson;
+            var res= lost.SearchLostsByCode();
+            if (res.Data == null)
+            {
+                return Json("لا يوجد نتائج للبحث");
+            }
+            return res.DataInJson; 
         }
     }
 }

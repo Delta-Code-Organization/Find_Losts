@@ -616,7 +616,7 @@
         $("[data-mask='mobile']").mask("999-9999-9999");
         $("[data-mask='datetime']").mask("99/99/9999 99:99");
         $("[data-mask='hour']").mask("99:99");
-        $("[data-mask='cardnumber']").mask("9999-9999-9999-9999");
+        $("[data-mask='cardnumber']").mask("9999-9999");
     };//End of masks
 
     /*Text Editors*/

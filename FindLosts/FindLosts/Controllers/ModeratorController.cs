@@ -146,7 +146,7 @@ namespace FindLosts.Controllers
             }
             return msg.Message.ShowMessage();
         }
-        public JsonResult SearchResult(string _Name,string _Code)
+        public JsonResult SearchResult(string _Name, string _Code)
         {
             List<LostsEntries> LOLE = new List<LostsEntries>();
             List<LostsEntries> LOL = new List<LostsEntries>();
@@ -154,8 +154,8 @@ namespace FindLosts.Controllers
             if (_Name != "" && _Code == "")
             {
                 lost.Name = _Name;
-                LOL=lost.SearchLostsByName().Data as List<LostsEntries>;
-                if (LOL==null)
+                LOL = lost.SearchLostsByName().Data as List<LostsEntries>;
+                if (LOL == null)
                 {
                     return Json("لا يوجد نتائج مطابقة للبحث");
                 }
@@ -167,16 +167,32 @@ namespace FindLosts.Controllers
             }
             if (_Name == "" && _Code != "")
             {
-                lost.Code=_Code;
-                LOLE.Add(lost.SearchLostsByCode().Data as LostsEntries);
-                return LOLE.ToJson();
+                lost.Code = _Code;
+                LOL = lost.SearchLostsByCode().Data as List<LostsEntries>;
+                if (LOL == null)
+                {
+                    return Json("لا يوجد نتائج مطابقة للبحث");
+                }
+                else
+                {
+                    LOLE.AddRange(LOL);
+                    return LOLE.ToJson();
+                }
             }
             if (_Name != "" && _Code != "")
             {
                 lost.Name = _Name;
                 lost.Code = _Code;
-                LOLE.Add(lost.SearchLostsByNameAndCode().Data as LostsEntries);
-                return LOLE.ToJson();
+                LOL = lost.SearchLostsByNameAndCode().Data as List<LostsEntries>;
+                if (LOL == null)
+                {
+                    return Json("لا يوجد نتائج مطابقة للبحث");
+                }
+                else
+                {
+                    LOLE.AddRange(LOL);
+                    return LOLE.ToJson();
+                }
             }
             return new JsonResult();
         }

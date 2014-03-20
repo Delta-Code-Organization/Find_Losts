@@ -13,11 +13,11 @@ namespace FindLosts.Models
             var exist = db.LostsEntries.Any(p => p.Code==this.Code && p.Name==this.Name);
             if (exist == true)
             {
-                var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code && p.Name == this.Name).SingleOrDefault();
+                var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code && p.Name == this.Name).ToList();
                 return new Returner
                 {
                     Data=lostEntry,
-                    DataInJson = lostEntry.ToJson()
+                    DataInJson = lostEntry.FirstOrDefault().ToJson()
                 };
             }
             return new Returner
@@ -93,15 +93,16 @@ namespace FindLosts.Models
               var exist = db.LostsEntries.Any(p => p.Code == this.Code);
               if (exist == true)
               {
-                  var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code).SingleOrDefault();
+                  var lostEntry = db.LostsEntries.Where(p => p.Code == this.Code).ToList();
                   return new Returner
                   {
                       Data=lostEntry,
-                      DataInJson = lostEntry.ToJson()
+                      DataInJson = lostEntry.FirstOrDefault().ToJson()
                   };
               }
               return new Returner
               {
+                  DataInJson = "لا يوجد نتائج مطابقه للبحث".ToJson(),
                   Message = Msgs.لا_يوجد_نتائج_مطابقه_للبحث
               };
           }
